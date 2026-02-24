@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Ingresos } from './components/Ingresos';
 import { Inventario } from './components/Inventario';
 import { Ventas } from './components/Ventas';
-
-// View placeholders
-const Dashboard = () => <div className="glass" style={{ padding: '2rem' }}><h2>Dashboard</h2><p>Métricas y reportes (En construcción).</p></div>;
+import { Familias } from './components/Familias';
+import { Dashboard } from './components/Dashboard';
+import { initDummyDataIfNeeded } from './services/db';
 
 function App() {
+  useEffect(() => {
+    initDummyDataIfNeeded();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -17,6 +21,7 @@ function App() {
           <Route path="inventario" element={<Inventario />} />
           <Route path="ingresos" element={<Ingresos />} />
           <Route path="ventas" element={<Ventas />} />
+          <Route path="familias" element={<Familias />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

@@ -64,6 +64,17 @@ export function Sidebar() {
                     <ShoppingCart size={20} />
                     <span>Punto de Venta</span>
                 </NavLink>
+
+                <NavLink to="/familias" style={({ isActive }) => ({
+                    display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', borderRadius: '8px',
+                    background: isActive ? 'var(--accent-color)' : 'transparent',
+                    color: isActive ? 'white' : 'var(--text-primary)',
+                    transition: 'all 0.2s',
+                    fontWeight: isActive ? '600' : '400'
+                })}>
+                    <Package size={20} />
+                    <span>Familias</span>
+                </NavLink>
             </nav>
 
             {/* Footer info */}
